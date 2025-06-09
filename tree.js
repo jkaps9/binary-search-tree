@@ -1,10 +1,10 @@
 import { mergeSort } from "./merge-sort.js";
 
 class Node {
-  constructor(data = null, left = null, right = null) {
+  constructor(data) {
     this.data = data;
-    this.left = left;
-    this.right = right;
+    this.left = null;
+    this.right = null;
   }
 }
 
@@ -29,7 +29,6 @@ export class Tree {
     // Recursively do the same for the left half and right half.
     //// Get the middle of the left half and make it the left child of the root created in step 1.
     //// Get the middle of the right half and make it the right child of the root created in step 1.
-    // Print the preorder of the tree.
     if (start > end) {
       return null;
     }
@@ -39,5 +38,31 @@ export class Tree {
     root.left = this.buildTree(array, start, mid - 1);
     root.right = this.buildTree(array, mid + 1, end);
     return root;
+  }
+
+  insert(value, node = this.root) {
+    if (node === null) {
+      return new Node(value);
+    }
+
+    if (value === node.data) {
+      return;
+    }
+
+    if (value < node.data) {
+      return this.insert(value, node.left);
+    } else {
+      return this.insert(value, node.right);
+    }
+
+    return node;
+  }
+
+  inorder(node = this.root) {
+    if (node !== null) {
+      this.inorder(node.left);
+      console.log(node.data + " ");
+      this.inorder(node.right);
+    }
   }
 }
