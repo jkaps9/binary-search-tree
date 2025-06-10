@@ -58,6 +58,43 @@ export class Tree {
     return node;
   }
 
+  deleteItem(value, node = this.root) {
+    if (node === null) {
+      return;
+    }
+
+    if (node.left !== null && node.left.data === value) {
+      if (node.left.left === null && node.left.right === null) {
+        //no children
+        node.left = null;
+      } else if (node.right.left === null || node.right.right === null) {
+        //only 1 child
+        node.left = node.left.left === null ? node.left.right : node.left.left;
+      }
+      return;
+    }
+
+    if (node.right !== null && node.right.data === value) {
+      if (node.right.left === null && node.right.right === null) {
+        //no children
+        node.right = null;
+      } else if (node.right.left === null || node.right.right === null) {
+        //only 1 child
+        node.right =
+          node.right.left === null ? node.right.right : node.right.left;
+      }
+      return;
+    }
+
+    if (value < node.data) {
+      this.deleteItem(value, node.left);
+    } else if (value > node.data) {
+      this.deleteItem(value, node.right);
+    } else {
+      return;
+    }
+  }
+
   inorder(node = this.root) {
     if (node !== null) {
       this.inorder(node.left);
