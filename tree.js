@@ -11,7 +11,7 @@ class Node {
 export class Tree {
   constructor(array) {
     let arr = this.getSortedArray(array);
-    this.root = this.buildTree(arr, 0, arr.length);
+    this.root = this.buildTree(arr, 0, arr.length - 1);
   }
 
   getSortedArray(array) {
