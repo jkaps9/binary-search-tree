@@ -59,3 +59,12 @@ console.log();
 bts.inorder(function printNodeVisited(node) {
   console.log(`visited ${node.data}`);
 });
+console.log();
+bts.preorder(function printNodeVisited(node) {
+  console.log(`visited ${node.data}`);
+});
+
+console.log();
+bts.postorder(function printNodeVisited(node) {
+  console.log(`visited ${node.data}`);
+});

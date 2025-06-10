@@ -159,4 +159,36 @@ export class Tree {
       this.inorder(callback, node.right);
     }
   }
+
+  preorder(callback, node = this.root) {
+    if (
+      callback === null ||
+      callback === undefined ||
+      typeof callback !== "function"
+    ) {
+      throw new Error("must pass a callback function to preorder");
+    }
+
+    if (node !== null) {
+      callback(node);
+      this.preorder(callback, node.left);
+      this.preorder(callback, node.right);
+    }
+  }
+
+  postorder(callback, node = this.root) {
+    if (
+      callback === null ||
+      callback === undefined ||
+      typeof callback !== "function"
+    ) {
+      throw new Error("must pass a callback function to postorder");
+    }
+
+    if (node !== null) {
+      this.postorder(callback, node.left);
+      this.postorder(callback, node.right);
+      callback(node);
+    }
+  }
 }
