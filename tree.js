@@ -50,9 +50,9 @@ export class Tree {
     }
 
     if (value < node.data) {
-      return this.insert(value, node.left);
-    } else {
-      return this.insert(value, node.right);
+      node.left = this.insert(value, node.left);
+    } else if (value > node.data) {
+      node.right = this.insert(value, node.right);
     }
 
     return node;
