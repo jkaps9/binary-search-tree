@@ -48,23 +48,35 @@ prettyPrint(bts.root);
 // console.log();
 // prettyPrint(bts.root);
 
-console.log();
+// console.log();
+// console.log();
+// console.log();
+
+// bts.levelOrder(function printNodeVisited(node) {
+//   console.log(`visited ${node.data}`);
+// });
+// console.log();
+// bts.inorder(function printNodeVisited(node) {
+//   console.log(`visited ${node.data}`);
+// });
+// console.log();
+// bts.preorder(function printNodeVisited(node) {
+//   console.log(`visited ${node.data}`);
+// });
+
+// console.log();
+// bts.postorder(function printNodeVisited(node) {
+//   console.log(`visited ${node.data}`);
+// });
+
 console.log();
 console.log();
 
-bts.levelOrder(function printNodeVisited(node) {
-  console.log(`visited ${node.data}`);
-});
+console.log(bts.height(8));
 console.log();
-bts.inorder(function printNodeVisited(node) {
-  console.log(`visited ${node.data}`);
-});
-console.log();
-bts.preorder(function printNodeVisited(node) {
-  console.log(`visited ${node.data}`);
-});
-
-console.log();
-bts.postorder(function printNodeVisited(node) {
-  console.log(`visited ${node.data}`);
-});
+console.log(bts.depth(8)); // 0
+console.log(bts.depth(67)); // 1
+console.log(bts.depth(23)); // 3
+console.log(bts.depth(1)); // 2
+console.log(bts.depth(6345)); // 3
+console.log(bts.depth(456)); // null

@@ -191,4 +191,26 @@ export class Tree {
       callback(node);
     }
   }
+
+  depth(value) {
+    let node = this.root;
+    if (node.data === value) {
+      return 0;
+    }
+    let distance = 0;
+    let found = false;
+    while (!found && node !== null) {
+      if (value < node.data) {
+        node = node.left;
+        distance++;
+      } else if (value > node.data) {
+        node = node.right;
+        distance++;
+      } else {
+        found = true;
+      }
+    }
+
+    return found ? distance : null;
+  }
 }
