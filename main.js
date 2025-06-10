@@ -16,34 +16,42 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 const bts = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 // bts.inorder();
 
+prettyPrint(bts.root);
+// console.log();
+// console.log();
+// bts.insert(6);
+// // prettyPrint(bts.root);
+// // console.log();
+// bts.insert(8); // check that you can't insert a new node with an existing value
+// // prettyPrint(bts.root);
+
+// // console.log();
+// bts.insert(50);
 // prettyPrint(bts.root);
 // console.log();
-// console.log();
-bts.insert(6);
+
+// // bts.deleteItem(50); // check node with no children
 // prettyPrint(bts.root);
 // console.log();
-bts.insert(8); // check that you can't insert a new node with an existing value
+
+// bts.deleteItem(5); // check node with only 1 child
+//prettyPrint(bts.root);
+//console.log();
+
+//bts.deleteItem(8); // check node with both children
+//prettyPrint(bts.root);
+//console.log();
+
+// console.log(bts.find(8)); // null
+// console.log(bts.find(1)); // Object
+// console.log(bts.find(9)); // Object
+// console.log();
 // prettyPrint(bts.root);
 
-// console.log();
-bts.insert(50);
-prettyPrint(bts.root);
+console.log();
+console.log();
 console.log();
 
-bts.deleteItem(50); // check node with no children
-prettyPrint(bts.root);
-console.log();
-
-bts.deleteItem(5); // check node with only 1 child
-prettyPrint(bts.root);
-console.log();
-
-bts.deleteItem(8); // check node with both children
-prettyPrint(bts.root);
-console.log();
-
-console.log(bts.find(8)); // null
-console.log(bts.find(1)); // Object
-console.log(bts.find(9)); // Object
-console.log();
-prettyPrint(bts.root);
+bts.levelOrder(function printNodeVisited(node) {
+  console.log(`visited ${node.data}`);
+});

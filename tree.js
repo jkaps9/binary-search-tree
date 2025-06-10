@@ -124,6 +124,26 @@ export class Tree {
     }
   }
 
+  levelOrder(callback) {
+    if (
+      callback === null ||
+      callback === undefined ||
+      typeof callback !== "function"
+    ) {
+      throw new Error("must pass a callback function to levelOrder");
+    }
+
+    let queue = [];
+    queue.push(this.root);
+
+    while (queue.length > 0) {
+      let currNode = queue.shift();
+      callback(currNode);
+      if (currNode.left !== null) queue.push(currNode.left);
+      if (currNode.right !== null) queue.push(currNode.right);
+    }
+  }
+
   inorder(node = this.root) {
     if (node !== null) {
       this.inorder(node.left);
