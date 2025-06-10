@@ -58,6 +58,18 @@ export class Tree {
     return node;
   }
 
+  #getSuccesor(node) {
+    if (node === null) {
+      throw new Error("can't get successor of null node");
+    }
+
+    node = node.right;
+    while (node !== null && node.left !== null) {
+      node = node.left;
+    }
+    return node;
+  }
+
   deleteItem(value, node = this.root) {
     if (node === null) {
       return;
@@ -67,9 +79,14 @@ export class Tree {
       if (node.left.left === null && node.left.right === null) {
         //no children
         node.left = null;
-      } else if (node.right.left === null || node.right.right === null) {
+      } else if (node.left.left === null || node.left.right === null) {
         //only 1 child
         node.left = node.left.left === null ? node.left.right : node.left.left;
+      } else {
+        //both children
+        let succesor = this.#getSuccesor(node.left);
+        succesor.left = node.left.left;
+        node.left = succesor;
       }
       return;
     }
@@ -82,6 +99,11 @@ export class Tree {
         //only 1 child
         node.right =
           node.right.left === null ? node.right.right : node.right.left;
+      } else {
+        //both children
+        let succesor = this.#getSuccesor(node.right);
+        succesor.left = node.right.left;
+        node.right = succesor;
       }
       return;
     }

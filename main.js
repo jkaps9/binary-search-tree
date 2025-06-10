@@ -34,6 +34,10 @@ bts.deleteItem(50); // check node with no children
 prettyPrint(bts.root);
 console.log();
 
-bts.deleteItem(7); // check node with only 1 child
+bts.deleteItem(5); // check node with only 1 child
+prettyPrint(bts.root);
+console.log();
+
+bts.deleteItem(67); // check node with both children
 prettyPrint(bts.root);
 console.log();
