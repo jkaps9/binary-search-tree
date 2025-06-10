@@ -41,3 +41,9 @@ console.log();
 bts.deleteItem(8); // check node with both children
 prettyPrint(bts.root);
 console.log();
+
+console.log(bts.find(8)); // null
+console.log(bts.find(1)); // Object
+console.log(bts.find(9)); // Object
+console.log();
+prettyPrint(bts.root);
