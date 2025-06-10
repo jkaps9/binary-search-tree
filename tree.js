@@ -192,6 +192,20 @@ export class Tree {
     }
   }
 
+  height(value) {
+    function helper(node) {
+      if (node === null) return -1;
+      const left = helper(node.left);
+      const right = helper(node.right);
+      return Math.max(left, right) + 1;
+    }
+
+    const node = this.find(value);
+    const nodeHeight = helper(node);
+    if (nodeHeight === -1) return null;
+    else return nodeHeight;
+  }
+
   depth(value) {
     let node = this.root;
     if (node.data === value) {

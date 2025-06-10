@@ -72,7 +72,10 @@ prettyPrint(bts.root);
 console.log();
 console.log();
 
-console.log(bts.height(8));
+console.log(bts.height(8)); // 3
+console.log(bts.height(324)); //1
+console.log(bts.height(456)); //null
+
 console.log();
 console.log(bts.depth(8)); // 0
 console.log(bts.depth(67)); // 1
