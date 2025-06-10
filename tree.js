@@ -72,49 +72,42 @@ export class Tree {
 
   deleteItem(value, node = this.root) {
     if (node === null) {
-      return;
-    }
-
-    if (node.left !== null && node.left.data === value) {
-      if (node.left.left === null && node.left.right === null) {
-        //no children
-        node.left = null;
-      } else if (node.left.left === null || node.left.right === null) {
-        //only 1 child
-        node.left = node.left.left === null ? node.left.right : node.left.left;
-      } else {
-        //both children
-        let succesor = this.#getSuccesor(node.left);
-        succesor.left = node.left.left;
-        node.left = succesor;
-      }
-      return;
-    }
-
-    if (node.right !== null && node.right.data === value) {
-      if (node.right.left === null && node.right.right === null) {
-        //no children
-        node.right = null;
-      } else if (node.right.left === null || node.right.right === null) {
-        //only 1 child
-        node.right =
-          node.right.left === null ? node.right.right : node.right.left;
-      } else {
-        //both children
-        let succesor = this.#getSuccesor(node.right);
-        succesor.left = node.right.left;
-        node.right = succesor;
-      }
-      return;
+      return node;
     }
 
     if (value < node.data) {
-      this.deleteItem(value, node.left);
+      node.left = this.deleteItem(value, node.left);
     } else if (value > node.data) {
-      this.deleteItem(value, node.right);
+      node.right = this.deleteItem(value, node.right);
     } else {
-      return;
+      //  found the node to delete
+      if (node.left === null) {
+        //either no children, or only the right child
+        //if no children, we want to return null (instead of the node)
+        //if only the right child then we would return the right child
+        //if there are no children the right child would be null,
+        //so by returning the right child we satisfy both requirements
+        return node.right;
+      }
+
+      if (node.right === null) {
+        // see notes above
+        return node.left;
+      }
+
+      // Both children present
+
+      // get inorder successor
+      let succesor = this.#getSuccesor(node);
+
+      // copy contents of inorder successor to the node
+      node.data = succesor.data;
+
+      // delete inorder successor
+      node.right = this.deleteItem(succesor.data, node.right);
     }
+
+    return node;
   }
 
   inorder(node = this.root) {
