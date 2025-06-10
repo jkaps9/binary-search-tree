@@ -55,3 +55,7 @@ console.log();
 bts.levelOrder(function printNodeVisited(node) {
   console.log(`visited ${node.data}`);
 });
+console.log();
+bts.inorder(function printNodeVisited(node) {
+  console.log(`visited ${node.data}`);
+});

@@ -144,11 +144,19 @@ export class Tree {
     }
   }
 
-  inorder(node = this.root) {
+  inorder(callback, node = this.root) {
+    if (
+      callback === null ||
+      callback === undefined ||
+      typeof callback !== "function"
+    ) {
+      throw new Error("must pass a callback function to inorder");
+    }
+
     if (node !== null) {
-      this.inorder(node.left);
-      console.log(node.data + " ");
-      this.inorder(node.right);
+      this.inorder(callback, node.left);
+      callback(node);
+      this.inorder(callback, node.right);
     }
   }
 }
