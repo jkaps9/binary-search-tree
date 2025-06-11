@@ -10,11 +10,11 @@ class Node {
 
 export class Tree {
   constructor(array) {
-    let arr = this.getSortedArray(array);
+    let arr = this.#getSortedArray(array);
     this.root = this.buildTree(arr, 0, arr.length - 1);
   }
 
-  getSortedArray(array) {
+  #getSortedArray(array) {
     let tempArray = [];
     array.forEach((element) => {
       if (!tempArray.includes(element)) {
@@ -243,5 +243,24 @@ export class Tree {
       this.isBalanced(node.left) &&
       this.isBalanced(node.right)
     );
+  }
+
+  rebalance() {
+    function getArray(node) {
+      const arr = [];
+
+      if (node !== null) {
+        arr.push(...getArray(node.left), node.data, ...getArray(node.right));
+      }
+      return arr;
+    }
+
+    if (this.isBalanced()) {
+      return false;
+    } else {
+      let arr = getArray(this.root);
+      this.root = this.buildTree(arr, 0, arr.length - 1);
+      return true;
+    }
   }
 }

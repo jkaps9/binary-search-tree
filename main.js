@@ -97,9 +97,13 @@ console.log();
 prettyPrint(newTree.root);
 console.log();
 console.log(newTree.isBalanced()); // true
-
+newTree.rebalance();
 newTree.insert(5);
 console.log();
 prettyPrint(newTree.root);
 console.log();
 console.log(newTree.isBalanced()); // false
+newTree.rebalance();
+console.log();
+prettyPrint(newTree.root);
+console.log(newTree.isBalanced()); // true
