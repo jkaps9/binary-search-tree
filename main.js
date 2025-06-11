@@ -16,7 +16,7 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 const bts = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 // bts.inorder();
 
-prettyPrint(bts.root);
+// prettyPrint(bts.root);
 // console.log();
 // console.log();
 // bts.insert(6);
@@ -69,17 +69,37 @@ prettyPrint(bts.root);
 //   console.log(`visited ${node.data}`);
 // });
 
-console.log();
-console.log();
+// console.log();
 
-console.log(bts.height(8)); // 3
-console.log(bts.height(324)); //1
-console.log(bts.height(456)); //null
+// console.log(bts.height(8)); // 3
+// console.log(bts.height(324)); //1
+// console.log(bts.height(456)); //null
+
+// console.log();
+// console.log(bts.depth(8)); // 0
+// console.log(bts.depth(67)); // 1
+// console.log(bts.depth(23)); // 3
+// console.log(bts.depth(1)); // 2
+// console.log(bts.depth(6345)); // 3
+// console.log(bts.depth(456)); // null
 
 console.log();
-console.log(bts.depth(8)); // 0
-console.log(bts.depth(67)); // 1
-console.log(bts.depth(23)); // 3
-console.log(bts.depth(1)); // 2
-console.log(bts.depth(6345)); // 3
-console.log(bts.depth(456)); // null
+// bts.deleteItem(6345);
+// bts.deleteItem(23);
+// bts.deleteItem(7);
+// bts.deleteItem(3);
+prettyPrint(bts.root);
+console.log();
+console.log(bts.isBalanced());
+
+const newTree = new Tree([1, 2, 3, 4]);
+console.log();
+prettyPrint(newTree.root);
+console.log();
+console.log(newTree.isBalanced()); // true
+
+newTree.insert(5);
+console.log();
+prettyPrint(newTree.root);
+console.log();
+console.log(newTree.isBalanced()); // false
